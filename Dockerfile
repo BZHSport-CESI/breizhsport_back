@@ -25,6 +25,6 @@ COPY --from=build /opt/app ./
 ENV PATH=/opt/node_modules/.bin:$PATH
 
 RUN chown -R 1337:1337 /opt/app
-USER 1337:1337
-EXPOSE 1337
+USER 1001:1001
+EXPOSE 1001
 CMD ["npm", "run", "start"]

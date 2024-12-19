@@ -17,3 +17,8 @@ services:
       - JWT_SECRET=tobemodified
       - DATABASE_CLIENT={{ db_client }}
       - DATABASE_FILENAME={{ db_path }}
+
+networks:
+  bzh_network:
+    name: bzh_network
+    external: true

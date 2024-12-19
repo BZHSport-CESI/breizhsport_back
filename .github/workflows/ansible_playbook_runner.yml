@@ -49,6 +49,6 @@ jobs:
             --extra-vars registry_username=${{ github.repository_owner }} \
             --extra-vars registry_token=${{ secrets.GITHUB_TOKEN }} \
             --extra-vars image_name=ghcr.io/${{ github.repository }}:master \
-            --extra-vars db_client=${{ secrets.DATABASE_CLIENT }} \
+            --extra-vars db_client=${{ secrets.DB_CLIENT }} \
             --extra-vars db_path=${{ secrets.DB_PATH }}
 

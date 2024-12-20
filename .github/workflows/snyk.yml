@@ -22,26 +22,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Installer Snyk
-      - name: Set up Snyk
-        uses: snyk/actions/setup@v2
+      # Installer Snyk et analyser les dépendances
+      - name: Run Snyk vulnerability scan
+        uses: snyk/actions@v1
         with:
-          version: 'latest' # Spécifiez la version ou utilisez "latest"
-
-      # Authentifier Snyk
-      - name: Authenticate Snyk
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }} # Ajoutez votre Snyk API Token dans les secrets GitHub
-        run: snyk auth $SNYK_TOKEN
-
-      # Analyser les dépendances
-      - name: Test for vulnerabilities
+          args: test --all-projects --severity-threshold=medium
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        run: snyk test --all-projects --severity-threshold=medium
-
-      # (Optionnel) Monitor the project on Snyk
-      - name: Monitor project in Snyk
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-        run: snyk monitor --all-projects
